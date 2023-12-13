@@ -1,4 +1,4 @@
-import nifty7 as ift
+import nifty8 as ift
 import libs as Egf
 import numpy as np
 
@@ -136,12 +136,16 @@ def run_inference():
                                        'vmin_std':'-250', 'vmax_std':'250'},
                        'egal_results_vs_data': {'x_label': 'results', 'y_label': 'data'}}
 
-    Egf.minimization(n_global=Egf.config['params']['nglobal'], kl_type='GeoMetricKL', plot_path=Egf.config['params']['plot_path'],
+    #Egf.minimization(n_global=Egf.config['params']['nglobal'], kl_type='GeoMetricKL', plot_path=Egf.config['params']['plot_path'],
+    #                 likelihoods={'implicit_likelihood': implicit_likelihood,
+    #                              'explicit_likelihood': explicit_likelihood},
+    #                 sky_maps=sky_models, power_spectra=power_models, scatter_pairs=scatter_pairs,
+    #                 plotting_kwargs=plotting_kwargs)
+
+    Egf.minimization(n_global=Egf.config['params']['nglobal'], kl_type='SampledKLEnergy', plot_path=Egf.config['params']['plot_path'],
                      likelihoods={'implicit_likelihood': implicit_likelihood,
                                   'explicit_likelihood': explicit_likelihood},
                      sky_maps=sky_models, power_spectra=power_models, scatter_pairs=scatter_pairs,
                      plotting_kwargs=plotting_kwargs)
-
-
 if __name__ == '__main__':
     run_inference()

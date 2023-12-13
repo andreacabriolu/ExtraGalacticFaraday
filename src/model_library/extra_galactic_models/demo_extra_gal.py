@@ -1,4 +1,4 @@
-import nifty7 as ift
+import nifty8 as ift
 from ..Model import Model
 import libs as Egf
 import numpy as np
@@ -27,7 +27,7 @@ class ExtraGalDemoModel(Model):
         H0 = 100 * h
 
         for i in range (len(z)):
-            
+
             D[i]=sp.integrate.quad(lambda zi: (Egf.const['c']*(1+zi)**(4+chi_red))/(H0*np.sqrt( Wm*np.power((1+zi),3)+Wc*np.power((1+zi),2) +Wl)), 0, z[i])[0]
         return D
 
